@@ -1,15 +1,17 @@
 import Categories from "@/components/Categories";
+import MenuItem from "@/components/MenuItem";
+import PostList from "@/components/PostList";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main className="flex flex-col gap-8 mt-24">
-      <h1 className="italic text-4xl md:text-5xl text-center ">
+      <h1 className="font-bold text-4xl md:text-5xl">
         Discover creative ideas and top stories that make headlines around the
         world.
       </h1>
 
-      <div className="flex flex-col md:flex-row gap-8 md:gap-12 mt-4">
+      {/* <div className="flex flex-col md:flex-row gap-8 md:gap-12 mt-4">
         <div className="relative md:flex-1  w-full h-[300px]">
           <Image
             src="/culture.png"
@@ -33,9 +35,13 @@ export default function Home() {
             Read More
           </button>
         </div>
-      </div>
+      </div> */}
 
       <Categories />
+      <div className="flex gap-12">
+        <PostList />
+        <MenuItem />
+      </div>
     </main>
   );
 }
