@@ -50,7 +50,7 @@ const links = [
 
 const Categories = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 my-8">
       <h1 className="text-3xl font-bold">Popular Categories</h1>
       <div className="flex flex-wrap items-center gap-5">
         {links.map((link) => (
