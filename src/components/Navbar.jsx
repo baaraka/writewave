@@ -11,10 +11,10 @@ const Navbar = () => {
         <Link href="/" className="text-3xl md:text-5xl font-bold">
           WriteWave
         </Link>
-        <button className="p-4 w-[150px] text-xl bg-green-500 rounded-full">
+        <button className="hidden md:block p-4 w-[150px] text-xl bg-green-500 rounded-full">
           Support Me
         </button>
-        <button className="p-4 w-[150px] text-xl bg-black rounded-full">
+        <button className="hidden md:block p-4 w-[150px] text-xl bg-black rounded-full">
           Login
         </button>
         <div className="md:hidden">
