@@ -17,7 +17,7 @@ const getData = async () => {
 const PostList = async () => {
   const posts = await getData();
   return (
-    <div className="flex flex-col gap-5 flex-5">
+    <div className="flex flex-col gap-7 flex-8">
       <h1 className="text-3xl font-bold">Recent Posts</h1>
 
       {posts.map((post) => (
