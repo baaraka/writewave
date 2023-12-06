@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <main className="flex flex-col gap-8 mt-24">
       <h1 className="font-bold text-4xl md:text-5xl">
-        Discover creative ideas and top stories that make headlines around the
-        world.
+        Hey {"it's"} BarakaCodes here. Discover creative ideas and top stories
+        that make headlines around the world.
       </h1>
 
       {/* <div className="flex flex-col md:flex-row gap-8 md:gap-12 mt-4">
