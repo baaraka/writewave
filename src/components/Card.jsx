@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Card = ({ post, key }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-12" key={key}>
+    <div className="flex flex-col md:flex-row items-center gap-12">
       {post.image && (
         <div className="relative h-[300px] w-full md:flex-1">
           <Image
@@ -24,11 +25,15 @@ const Card = ({ post, key }) => {
             {post.category}
           </span>
         </p>
-        <h1 className="text-2xl font-medium">{post.title}</h1>
+        <Link href={`/single/${post._id}`} key={post._id}>
+          <h1 className="text-2xl font-medium">{post.title}</h1>
+        </Link>
         <p className="text-lg text-[#626262] font-light">{post.desc}</p>
-        <button className="border-b border-green-500 max-w-max">
-          Read More
-        </button>
+        <Link href={`/single/${post._id}`} key={post._id}>
+          <button className="border-b border-green-500 max-w-max">
+            Read More
+          </button>
+        </Link>
       </div>
     </div>
   );
