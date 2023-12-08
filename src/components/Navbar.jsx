@@ -6,8 +6,8 @@ import Search from "./Search";
 
 const Navbar = () => {
   return (
-    <nav className="flex flex-col gap-10">
-      <div className="flex items-center justify-between">
+    <nav className="flex flex-col bg-gray-800 p-4 gap-10">
+      <div className="flex items-center justify-between shadow-xl pb-5">
         <Link href="/" className="text-3xl md:text-5xl font-bold">
           WriteWave
         </Link>
