@@ -17,7 +17,7 @@ const getData = async () => {
 const MenuList = async () => {
   const data = await getData();
   return (
-    <div className="hidden md:flex items-center flex-wrap gap-5 p-4 bg-gray-800 shadow-lg">
+    <div className="hidden md:flex items-center flex-wrap gap-5 p-4 shadow-lg">
       {data.map((link) => (
         <Link
           href={link.url}
