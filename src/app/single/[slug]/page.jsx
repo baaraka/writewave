@@ -34,7 +34,9 @@ const Single = async ({ params }) => {
             />
             <div>
               <h4 className="text-lg font-light">{post.username}</h4>
-              <span className="text-sm font-light">{post.createdAt}</span>
+              <span className="text-sm font-light">
+                {new Date(post.createdAt).toDateString()}
+              </span>
             </div>
           </div>
         </div>
