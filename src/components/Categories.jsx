@@ -2,52 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// const links = [
-//   {
-//     id: 1,
-//     title: "Coding",
-//     url: "/coding",
-//     image: "/coding.png",
-//     bg: "#FFD700",
-//   },
-//   {
-//     id: 2,
-//     title: "Fashion",
-//     url: "/fashion",
-//     image: "/fashion.png",
-//     bg: "#87CEEB",
-//   },
-//   {
-//     id: 3,
-//     title: "Culture",
-//     url: "/culture",
-//     image: "/culture.png",
-//     bg: "#83781b",
-//   },
-//   {
-//     id: 4,
-//     title: "Travel",
-//     url: "/travel",
-//     image: "/travel.png",
-//     bg: "#A3A18F",
-//   },
-//   {
-//     id: 5,
-//     title: "Style",
-//     url: "/style",
-//     image: "/style.png",
-//     bg: "#A8E575",
-//   },
-
-//   {
-//     id: 6,
-//     title: "Food",
-//     url: "/food",
-//     image: "/food.png",
-//     bg: "#E5DC8D",
-//   },
-// ];
-
 const getData = async () => {
   const res = await fetch("http://localhost:3000/api/categories", {
     cache: "no-store",
@@ -68,7 +22,7 @@ const Categories = async () => {
       <div className="flex flex-wrap items-center gap-5">
         {data.map((link) => (
           <Link
-            href={link.url}
+            href={`/category/${link.slug}`}
             key={link._id}
             style={{ backgroundColor: link.bg }}
             className="flex gap-2 items-center justify-center w-[150px] sm:w-[180px] md:w-[230px] lg:w-[300px] xl:w-[170px] p-2 rounded-md"
