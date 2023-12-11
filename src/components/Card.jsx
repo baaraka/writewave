@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Card = ({ post, key }) => {
+const Card = ({ post }) => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-12">
       {post.image && (
@@ -18,7 +18,7 @@ const Card = ({ post, key }) => {
       <div className="md:flex-1 flex flex-col gap-7">
         <p>
           <span className="text-gray-500">
-            {post.createdAt.substring(0, 10)}
+            {new Date(post.createdAt).toDateString()}
           </span>{" "}
           -{" "}
           <span className="text-green-500 font-medium uppercase">
