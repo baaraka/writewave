@@ -3,6 +3,7 @@ import React from "react";
 import MenuList from "./MenuList";
 import Menu from "./Menu";
 import Search from "./Search";
+import SignInOut from "./signInOut";
 
 const Navbar = () => {
   return (
@@ -14,9 +15,9 @@ const Navbar = () => {
         <button className="hidden md:block p-4 w-[150px] text-xl bg-green-500 rounded-full">
           Support Me
         </button>
-        <button className="hidden md:block p-4 w-[150px] text-xl bg-black rounded-full">
-          Login
-        </button>
+
+        <SignInOut />
+
         <div className="md:hidden">
           <Menu />
         </div>
