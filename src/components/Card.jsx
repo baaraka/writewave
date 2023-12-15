@@ -6,7 +6,10 @@ const Card = ({ post }) => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-12">
       {post.image && (
-        <div className="relative h-[300px] w-full md:flex-1">
+        <div
+          className="relative h-[300px] w-full md:flex-1"
+          style={{ height: "300px", width: "100%" }}
+        >
           <Image
             src={post.image}
             alt={post.title}
@@ -28,9 +31,14 @@ const Card = ({ post }) => {
         <Link href={`/single/${post._id}`} key={post._id}>
           <h1 className="text-2xl font-medium">{post.title}</h1>
         </Link>
-        <p className="text-lg text-[#626262] font-light">{post.desc}</p>
+        <p
+          className="text-lg text-[#626262] font-light"
+          style={{ whiteSpace: "pre-line" }}
+        >
+          {post.desc.slice(0, 180)}...
+        </p>
         <Link href={`/single/${post._id}`} key={post._id}>
-          <button className="border-b border-green-500 max-w-max">
+          <button className="border-b border-green-500 max-w-max hover:scale-110 transition-transform duration-200 ease-in-out">
             Read More
           </button>
         </Link>
