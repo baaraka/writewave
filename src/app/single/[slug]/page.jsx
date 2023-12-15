@@ -53,7 +53,12 @@ const Single = async ({ params }) => {
       </div>
       <div className="flex gap-12">
         <div className="flex flex-col gap-7 flex-8">
-          <p className="text-lg text-gray-400">{post.desc}</p>
+          <p
+            className="text-lg text-gray-400"
+            style={{ whiteSpace: "pre-line" }}
+          >
+            {post.desc}
+          </p>
 
           <Comment />
         </div>
