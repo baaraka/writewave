@@ -6,7 +6,16 @@ import { NextResponse } from "next/server";
 export const POST = async (request) => {
   const body = await request.json();
 
-  const newPost = new Post(body);
+  const trimmedBody = {
+    title: body.title.trim(),
+    desc: body.desc.trim(),
+    category: body.category.trim(),
+    image: body.image.trim(),
+    username: body.username,
+    // Add more fields if necessary
+  };
+
+  const newPost = new Post(trimmedBody);
 
   try {
     await connect();
