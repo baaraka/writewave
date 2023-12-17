@@ -1,27 +1,45 @@
 import Link from "next/link";
 import React from "react";
-import Menu from "./Menu";
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-};
-
+const links = [
+  {
+    id: 1,
+    title: "Home",
+    url: "/",
+  },
+  {
+    id: 2,
+    title: "Portfolio",
+    url: "/portfolio",
+  },
+  {
+    id: 3,
+    title: "Blog",
+    url: "/posts",
+  },
+  {
+    id: 4,
+    title: "About",
+    url: "/about",
+  },
+  {
+    id: 5,
+    title: "Contact",
+    url: "/contact",
+  },
+  {
+    id: 6,
+    title: "Dashboard",
+    url: "/dashboard",
+  },
+];
 const MenuList = async () => {
-  const data = await getData();
   return (
     <div className="hidden md:flex items-center flex-wrap gap-5 p-4 shadow-lg">
-      {data.map((link) => (
+      {links.map((link) => (
         <Link
           href={link.url}
-          key={link._id}
+          key={link.id}
           className="text-lg w-[150px] hover:underline decoration-green-400 text-center decoration-2 active:underline underline-offset-8 rounded-full hover:font-bold capitalize hover:scale-110 transition-transform duration-200 ease-out"
         >
           {link.title}
