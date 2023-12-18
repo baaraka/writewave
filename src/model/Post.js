@@ -17,16 +17,10 @@ const postSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref: "Category",
-      // required: false,
     },
     username: {
       type: String,
       required: true,
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref: "User",
-      // required: false,
     },
   },
   {
