@@ -4,15 +4,13 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: process.env.FIREBASE,
-  authDomain: "writewave-29df5.firebaseapp.com",
-  projectId: "writewave-29df5",
-  storageBucket: "writewave-29df5.appspot.com",
-  messagingSenderId: "329285509577",
-  appId: "1:329285509577:web:f77176d056c5e575f30818",
-  measurementId: "G-S5E3DK65YV",
+  authDomain: "writewave2.firebaseapp.com",
+  projectId: "writewave2",
+  storageBucket: "writewave2.appspot.com",
+  messagingSenderId: "285326755458",
+  appId: "1:285326755458:web:cd7a1d934062ec79f3169b",
 };
 
 // Initialize Firebase
