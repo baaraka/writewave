@@ -1,15 +1,63 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { app } from "@/lib/firebase";
 
 const Dashboard = () => {
   const session = useSession();
 
   const router = useRouter();
+
+  const [file, setFile] = useState(null);
+  const [media, setMedia] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [category, setCategory] = useState("");
+
+  useEffect(() => {
+    const storage = getStorage(app);
+    const upload = () => {
+      const name = new Date().getTime() + file.name;
+      const storageRef = ref(storage, name);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {},
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setMedia(downloadURL);
+          });
+        }
+      );
+    };
+
+    file && upload();
+  }, [file]);
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -31,22 +79,20 @@ const Dashboard = () => {
   const handlePost = async (e) => {
     e.preventDefault();
 
-    const title = e.target[0].value;
-    const image = e.target[1].value;
-    const desc = e.target[2].value;
-    const category = e.target[3].value;
-
     try {
-      await fetch("api/posts", {
+     const res =  await fetch("api/posts", {
         method: "POST",
         body: JSON.stringify({
           title,
-          image,
+          image: media,
           desc,
           category,
           username: session.data.user.name,
         }),
       });
+
+      console.log(res)
+
       mutate();
       e.target.reset();
     } catch (error) {
@@ -101,11 +147,13 @@ const Dashboard = () => {
             className="py-2 px-4 bg-transparent border-2 border-gray-500 outline-none"
             type="text"
             placeholder="Title"
+            onChange={(e) => setTitle(e.target.value)}
           />
           <input
             className="py-2 px-4 bg-transparent border-2 border-gray-500 outline-none"
-            type="text"
-            placeholder="Image"
+            type="file"
+            id="image"
+            onChange={(e) => setFile(e.target.files[0])}
           />
           <textarea
             className="py-2 px-4 bg-transparent border-2 border-gray-500 outline-none"
@@ -114,12 +162,16 @@ const Dashboard = () => {
             cols="30"
             rows="10"
             placeholder="Description"
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
-          <select className="py-2 px-4 bg-transparent border-2 border-gray-500 outline-none">
-            <option>REACT</option>
-            <option>NODE</option>
-            <option>EXPRESS</option>
-            <option>MONGODB</option>
+          <select
+            onChange={(e) => setCategory(e.target.value)}
+            className="py-2 px-4 bg-transparent border-2 border-gray-500 outline-none"
+          >
+            <option value="REACT">REACT</option>
+            <option value="NODE">NODE</option>
+            <option value="EXPRESS">EXPRESS</option>
+            <option value="MONGODB">MONGODB</option>
           </select>
 
           <button className="py-2 px-4 bg-green-500">Send Post</button>
