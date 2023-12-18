@@ -10,9 +10,8 @@ export const POST = async (request) => {
     title: body.title.trim(),
     desc: body.desc.trim(),
     category: body.category.trim(),
-    image: body.image.trim(),
+    image: body.image,
     username: body.username,
-    // Add more fields if necessary
   };
 
   const newPost = new Post(trimmedBody);
@@ -25,7 +24,7 @@ export const POST = async (request) => {
     return new NextResponse("Post has been created", { status: 200 });
   } catch (error) {
     console.error("Error:", error);
-    return new NextResponse("Invalid json", { status: 500 });
+    return new NextResponse("Error creating the post", { status: 500 });
   }
 };
 
@@ -40,7 +39,7 @@ export const GET = async (request) => {
   } catch (error) {
     console.error("Error:", error);
 
-    return new NextResponse("Invalid json", { status: 500 });
+    return new NextResponse("Error in getting posts", { status: 500 });
   }
 };
 
