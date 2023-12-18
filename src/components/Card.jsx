@@ -4,7 +4,7 @@ import React from "react";
 
 const Card = ({ post }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-12">
+    <div className="flex flex-col md:flex-row gap-12">
       {post.image && (
         <div
           className="relative h-[300px] w-full md:flex-1"
