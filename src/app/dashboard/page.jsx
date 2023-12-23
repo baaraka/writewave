@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(null);
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -80,7 +80,7 @@ const Dashboard = () => {
     e.preventDefault();
 
     try {
-     const res =  await fetch("api/posts", {
+      const res = await fetch("api/posts", {
         method: "POST",
         body: JSON.stringify({
           title,
@@ -91,7 +91,7 @@ const Dashboard = () => {
         }),
       });
 
-      console.log(res)
+      console.log(res);
 
       mutate();
       e.target.reset();
@@ -165,9 +165,11 @@ const Dashboard = () => {
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>
           <select
+            value={category || ""}
             onChange={(e) => setCategory(e.target.value)}
             className="py-2 px-4 bg-transparent border-2 border-gray-500 outline-none"
           >
+            <option value={null}>Select</option>
             <option value="REACT">REACT</option>
             <option value="NODE">NODE</option>
             <option value="EXPRESS">EXPRESS</option>
