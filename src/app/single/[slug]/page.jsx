@@ -1,5 +1,3 @@
-import Comment from "@/components/Comment";
-import MenuItem from "@/components/MenuItem";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -59,11 +57,7 @@ const Single = async ({ params }) => {
           >
             {post.desc}
           </p>
-
-          <Comment />
         </div>
-
-        <MenuItem />
       </div>
     </div>
   );
