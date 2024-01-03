@@ -22,7 +22,7 @@ const Categories = async () => {
       <div className="flex flex-wrap items-center gap-5">
         {data.map((link) => (
           <Link
-            href={`/category/${link.title}`}
+            href={`/posts/?cat=${link.title}`}
             key={link._id}
             style={{ backgroundColor: link.bg }}
             className="flex gap-2 items-center justify-center w-[150px] sm:w-[180px] md:w-[230px] lg:w-[300px] xl:w-[170px] p-2 rounded-md"
