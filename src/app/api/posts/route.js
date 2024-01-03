@@ -28,38 +28,38 @@ export const POST = async (request) => {
   }
 };
 
-// get all post
-export const GET = async (request) => {
-  try {
-    await connect();
-
-    const posts = await Post.find();
-
-    return new NextResponse(JSON.stringify(posts), { status: 200 });
-  } catch (error) {
-    console.error("Error:", error);
-
-    return new NextResponse("Error in getting posts", { status: 500 });
-  }
-};
-
+// // get all post
 // export const GET = async (request) => {
 //   try {
 //     await connect();
 
-//     const category = request.query.category || null;
-
-//     let posts;
-//     if (category) {
-//       posts = await Post.find({ category: category });
-//     } else {
-//       posts = await Post.find();
-//     }
+//     const posts = await Post.find();
 
 //     return new NextResponse(JSON.stringify(posts), { status: 200 });
 //   } catch (error) {
 //     console.error("Error:", error);
 
-//     return new NextResponse("Invalid json", { status: 500 });
+//     return new NextResponse("Error in getting posts", { status: 500 });
 //   }
 // };
+
+export const GET = async (request) => {
+  try {
+    await connect();
+
+    const category = request.query.category || null;
+
+    let posts;
+    if (category) {
+      posts = await Post.find({ category: category });
+    } else {
+      posts = await Post.find();
+    }
+
+    return new NextResponse(JSON.stringify(posts), { status: 200 });
+  } catch (error) {
+    console.error("Error:", error);
+
+    return new NextResponse("Invalid json", { status: 500 });
+  }
+};
