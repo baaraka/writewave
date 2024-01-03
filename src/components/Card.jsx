@@ -24,9 +24,11 @@ const Card = ({ post }) => {
             {new Date(post.createdAt).toDateString()}
           </span>{" "}
           -{" "}
-          <span className="text-green-500 font-medium uppercase">
-            {post.category}
-          </span>
+          <Link href={`/posts/?cat=${category}`}>
+            <span className="text-green-500 font-medium uppercase">
+              {post.category}
+            </span>
+          </Link>
         </p>
         <Link href={`/single/${post._id}`} key={post._id}>
           <h1 className="text-2xl font-medium">{post.title}</h1>
