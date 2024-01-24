@@ -13,7 +13,7 @@ const Navbar = () => {
           WriteWave
         </Link>
         <button className="hidden md:block p-4 w-[150px] text-xl bg-green-500 rounded-full">
-          Support Me
+          Support
         </button>
         <div className="hidden md:block">
           <SignInOut />
